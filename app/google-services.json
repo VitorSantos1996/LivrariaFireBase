@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "102729158204",
+    "firebase_url": "https://livraria-40419.firebaseio.com",
+    "project_id": "livraria-40419",
+    "storage_bucket": "livraria-40419.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102729158204:android:1460f5a45084add2",
+        "android_client_info": {
+          "package_name": "com.example.vitorpereira.livrariafirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102729158204-t1tpoj2tbvms0pvr581adhsuto7seggm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vitorpereira.livrariafirebase",
+            "certificate_hash": "53759e718ac6bc79f1b2f45ed9008a95c813a582"
+          }
+        },
+        {
+          "client_id": "102729158204-dg7o31snd8kvdp82r045ff64vdurpiu8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCIA5lKMufaARYZLuiTt58KKsTuo_EJZE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102729158204-dg7o31snd8kvdp82r045ff64vdurpiu8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
