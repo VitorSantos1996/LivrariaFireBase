@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import com.google.firebase.FirebaseApp;
@@ -28,10 +29,9 @@ import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
-    FirebaseDatabase firebaseDatabase;
+
     DatabaseReference dataBaseReference;
 
-    FirebaseStorage storage;
     StorageReference storageReference;
 
 
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 ListView lista = (ListView) findViewById(R.id.lvMain);
 
                 ArrayAdapterLivro adapter = new ArrayAdapterLivro(MainActivity.this, listaLivro);
-                lista.setAdapter(adapter);
+                lista.setAdapter(adapter);;
             }
 
             @Override
@@ -74,12 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void inicializeFirebase() {
         FirebaseApp.initializeApp(this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        dataBaseReference = firebaseDatabase.getReference();
-
-
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
+        dataBaseReference = FirebaseDatabase.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
     }
 
     @Override

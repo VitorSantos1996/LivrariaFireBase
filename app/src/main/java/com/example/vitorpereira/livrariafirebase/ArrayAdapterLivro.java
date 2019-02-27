@@ -9,10 +9,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Registry;
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +26,7 @@ public class ArrayAdapterLivro extends ArrayAdapter<Livro> {
     private final Context context;
     private final List<Livro> elementos;
 
-    FirebaseStorage storage;
-    StorageReference storageReference;
+    private StorageReference storageReference;
 
     public ArrayAdapterLivro(Context context, List<Livro> elementos){
         super(context,R.layout.list_home,elementos);
@@ -34,25 +38,18 @@ public class ArrayAdapterLivro extends ArrayAdapter<Livro> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.list_home, parent, false);
 
+        Livro livro = new Livro();
+
+        storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference imageStorage = storageReference.child("imagens/"+ elementos.get(position).getUid());
         ImageView imagem = (ImageView) rowView.findViewById(R.id.imageHome);
         TextView titulo = (TextView) rowView.findViewById(R.id.tituloHome);
         TextView autor = (TextView) rowView.findViewById(R.id.autorHome);
         TextView editora = (TextView) rowView.findViewById(R.id.editorahome);
 
 
-        Livro livro = new Livro();
+        GlideApp.with(getContext()).load(imageStorage).into(imagem);
 
-
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
-
-//        StorageReference gsReference = storage.getReferenceFromUrl("gs://livraria-40419.appspot.com/images/"+ livro.getUid());
-
-//        Picasso.with(context).load(storageReference.child("imagens"+ livro.getUid())).into(imagem);
-
-//        Glide.with(getContext()).load(gsReference).into(imagem);
-//        Glide.with(getContext()).load(storageReference.getDownloadUrl().toString()).into(imagem);
-//        Glide.with(getContext()).load(storageReference.child("imagens/"+ livro.getUid())).into(imagem);
         imagem.setImageResource(elementos.get(position).getImagem());
         titulo.setText(elementos.get(position).getTitulo());
         autor.setText(elementos.get(position).getAutor());

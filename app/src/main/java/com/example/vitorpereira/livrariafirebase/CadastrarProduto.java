@@ -92,14 +92,16 @@ public class CadastrarProduto extends AppCompatActivity {
                     } else {
                         Livro livro = new Livro();
 
-                        livro.setUid(UUID.randomUUID().toString());
+                        String uId = UUID.randomUUID().toString();
+
+                        livro.setUid(uId);
                         livro.setTitulo(titulo);
                         livro.setAutor(autor);
                         livro.setEditora(editora);
 
                         dataBaseReference.child("Livros").child(livro.getUid()).setValue(livro);
 
-                        uploadImage();
+                        uploadImage(uId);
 
                         Toast.makeText(getApplicationContext(), "Adicionado com Sucesso", Toast.LENGTH_SHORT).show();
 
@@ -139,12 +141,12 @@ public class CadastrarProduto extends AppCompatActivity {
         }
     }
 
-    private void uploadImage(){
+    private void uploadImage(String uid){
         if(filePath != null)
         {
             final ProgressBar simpleProgressBar=(ProgressBar) findViewById(R.id.progressBar);
 
-            StorageReference ref = storageReference.child("imagens/"+ UUID.randomUUID().toString());
+            StorageReference ref = storageReference.child("imagens/"+ uid);
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override

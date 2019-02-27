@@ -4,6 +4,7 @@ public class Livro {
 
     private String uid;
     private int imagem;
+    private String urlImagem;
     private String titulo;
     private String autor;
     private String editora;
@@ -15,11 +16,20 @@ public class Livro {
     public String toString() {
         return "Livro{" +
                 "uid='" + uid + '\'' +
-                ", imagem='" + imagem + '\'' +
+                ", imagem=" + imagem +
+                ", urlImagem='" + urlImagem + '\'' +
                 ", titulo='" + titulo + '\'' +
                 ", autor='" + autor + '\'' +
                 ", editora='" + editora + '\'' +
                 '}';
+    }
+
+    public String getUrlImagem() {
+        return urlImagem;
+    }
+
+    public void setUrlImagem(String urlImagem) {
+        this.urlImagem = urlImagem;
     }
 
     public int getImagem() { return imagem; }
